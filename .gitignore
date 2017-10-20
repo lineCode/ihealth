@@ -1,0 +1,15 @@
+*.opendb
+*.db
+*.sdf
+*.suo
+*.ncb
+*.pdb
+*.iobj
+*.ipdb
+*.exe
+*.ilk
+*.exp
+
+ipch/
+
+
