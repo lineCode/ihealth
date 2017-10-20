@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ihealth", "iHealth\iHealth.vcxproj", "{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DuiLib", "DuiLibEx\DuiLib.vcxproj", "{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "toolbox", "CommonExt\DCICommonExtForVS2008.vcxproj", "{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug2010|Win32 = Debug2010|Win32
+		Release|Win32 = Release|Win32
+		Release2010|Win32 = Release2010|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Debug|Win32.Build.0 = Debug|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Debug2010|Win32.ActiveCfg = Debug|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Debug2010|Win32.Build.0 = Debug|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Release|Win32.ActiveCfg = Release|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Release|Win32.Build.0 = Release|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Release2010|Win32.ActiveCfg = Release|Win32
+		{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}.Release2010|Win32.Build.0 = Release|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Debug|Win32.Build.0 = Debug|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Debug2010|Win32.ActiveCfg = Debug|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Debug2010|Win32.Build.0 = Debug|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Release|Win32.ActiveCfg = Release|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Release|Win32.Build.0 = Release|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Release2010|Win32.ActiveCfg = Release|Win32
+		{E1ADB7DF-5814-4C4B-B180-FDAC2B6EA5E6}.Release2010|Win32.Build.0 = Release|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Debug|Win32.ActiveCfg = Debug2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Debug|Win32.Build.0 = Debug2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Debug2010|Win32.ActiveCfg = Debug2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Debug2010|Win32.Build.0 = Debug2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Release|Win32.ActiveCfg = Release2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Release|Win32.Build.0 = Release2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Release2010|Win32.ActiveCfg = Release2010|Win32
+		{FEA4E34E-4C5E-45C6-91CB-9060A6D1C60A}.Release2010|Win32.Build.0 = Release2010|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

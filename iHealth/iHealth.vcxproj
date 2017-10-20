@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>ihealth</ProjectName>
+    <ProjectGuid>{DE1FF33F-35B7-45C3-A78B-CC77E2C707A0}</ProjectGuid>
+    <RootNamespace>iHealth</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25420.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../Debug\</OutDir>
+    <IntDir>../Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../Release\</OutDir>
+    <IntDir>../Cache\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(solutiondir)include\mysql;$(solutiondir)include\wke;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../Duilib;../mysql/include;../LIB/Robot/APS Library/include;../LIB/Robot/NI/include;../LIB/Robot/Eigen3;../LIB/Robot/ATI/ATIDAQ;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_AFXEXT;_AFXDLL;_UNICODE;UNICODE</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>../Debug\$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol />
+      <BaseAddress>0x11000000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>D:\opencv\build\x86\vc12\lib;../Duilib;../LIB/Robot/APS Library/include;../LIB/Robot/NI/include;../LIB/Robot/Eigen3;../LIB/Robot/ATI/ATIDAQ;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_AFXEXT;_AFXDLL;_UNICODE;UNICODE</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <OutputFile>../Release\$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>0x11000000</BaseAddress>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\DAQSys.cpp" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\dom.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\expatls.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\ftconfig.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\ftrt.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\FTWrapper.cpp" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\node.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\stack.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmlparse.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmlrole.c" />
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmltok.c" />
+    <ClCompile Include="activecontrol.cpp" />
+    <ClCompile Include="boundarydetection.cpp" />
+    <ClCompile Include="cJSON.c" />
+    <ClCompile Include="contrlCard.cpp" />
+    <ClCompile Include="emgcontrl.cpp" />
+    <ClCompile Include="eyeControl.cpp" />
+    <ClCompile Include="EyeMode.cpp" />
+    <ClCompile Include="eyeTracking.cpp" />
+    <ClCompile Include="iHealth.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
+    <ClCompile Include="pasvcontrl.cpp" />
+    <ClCompile Include="PopupWidget.cpp" />
+    <ClCompile Include="RFCharSet.cpp" />
+    <ClCompile Include="RFEvaluationData.cpp" />
+    <ClCompile Include="RFExcel.cpp" />
+    <ClCompile Include="RFLoginFailWindow.cpp" />
+    <ClCompile Include="RFMainWindow.cpp" />
+    <ClCompile Include="RFMAS.cpp" />
+    <ClCompile Include="RFMYSQL.cpp" />
+    <ClCompile Include="RFMySQLThread.cpp" />
+    <ClCompile Include="RFPassiveTrain.cpp" />
+    <ClCompile Include="RFPassiveTrainAction.cpp" />
+    <ClCompile Include="RFPatientsManager.cpp" />
+    <ClCompile Include="RFPatientsTrainData.cpp" />
+    <ClCompile Include="RFPatientsTrainDetails.cpp" />
+    <ClCompile Include="RFPatientsTrainInfo.cpp" />
+    <ClCompile Include="RFRobotEventControl.cpp" />
+    <ClCompile Include="RFTTSSample.cpp" />
+    <ClCompile Include="robot.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UIAVPlayer.cpp" />
+    <ClCompile Include="UIChart.cpp" />
+    <ClCompile Include="UIEMGChart.cpp" />
+    <ClCompile Include="UIProgressEx.cpp" />
+    <ClCompile Include="WkeWebkit.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\DAQSys.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\dom.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\ftconfig.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\ftrt.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\FTWrapper.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\stack.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\xmlparse.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\xmlrole.h" />
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\xmltok.h" />
+    <ClInclude Include="activecontrol.h" />
+    <ClInclude Include="boundarydetection.h" />
+    <ClInclude Include="CApplication.h" />
+    <ClInclude Include="cJSON.h" />
+    <ClInclude Include="contrlCard.h" />
+    <ClInclude Include="CRange.h" />
+    <ClInclude Include="CWorkbook.h" />
+    <ClInclude Include="CWorkbooks.h" />
+    <ClInclude Include="CWorksheet.h" />
+    <ClInclude Include="CWorksheets.h" />
+    <ClInclude Include="emgcontrl.h" />
+    <ClInclude Include="EyeMode.h" />
+    <ClInclude Include="libzplay.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MusicPlayer.h" />
+    <ClInclude Include="pasvcontrl.h" />
+    <ClInclude Include="PopupWidget.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RFCharSet.h" />
+    <ClInclude Include="RFEvaluationData.h" />
+    <ClInclude Include="RFExcel.h" />
+    <ClInclude Include="RFLoginFailWindow.h" />
+    <ClInclude Include="RFMainWindow.h" />
+    <ClInclude Include="RFMAS.h" />
+    <ClInclude Include="RFMYSQL.h" />
+    <ClInclude Include="RFMySQLThread.h" />
+    <ClInclude Include="RFPassiveTrain.h" />
+    <ClInclude Include="RFPassiveTrainAction.h" />
+    <ClInclude Include="RFPatientsManager.h" />
+    <ClInclude Include="RFPatientsTrainData.h" />
+    <ClInclude Include="RFPatientsTrainDetails.h" />
+    <ClInclude Include="RFPatientsTrainInfo.h" />
+    <ClInclude Include="RFRobotEventControl.h" />
+    <ClInclude Include="RFTTSSample.h" />
+    <ClInclude Include="robot.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="UIAVPlayer.h" />
+    <ClInclude Include="UIChart.h" />
+    <ClInclude Include="UIEMGChart.h" />
+    <ClInclude Include="UIProgressEx.h" />
+    <ClInclude Include="WkeWebkit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="iHealth.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

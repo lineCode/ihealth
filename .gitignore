@@ -9,7 +9,15 @@
 *.exe
 *.ilk
 *.exp
+*.avi
+
 
 ipch/
+Cache/
+iHealth/Release
+iHealth/Debug
+DuiLibEx/Bin
+Debug/
+CommonExt/Bin
 
 

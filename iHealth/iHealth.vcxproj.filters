@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="inc">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{694cb0dd-f46d-43cc-a2b3-16b8638e3f63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controls">
+      <UniqueIdentifier>{5fc6a918-d3a6-49f5-bc13-8767c416f7de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="excell">
+      <UniqueIdentifier>{a29166ce-45aa-4861-bd45-c044483a4a40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zplay">
+      <UniqueIdentifier>{94628c2c-bc39-4d2f-a7df-e0335e1d75ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="robot">
+      <UniqueIdentifier>{71bcbd56-690f-4dd1-914d-a5a98906620a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="robot\ATIDAQ">
+      <UniqueIdentifier>{45f2d813-651f-4869-b250-341cfc582784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="robot\Math">
+      <UniqueIdentifier>{44fa5750-eaee-4116-93b7-802c7cb6883f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="iHealth.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="RFLoginFailWindow.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="RFMainWindow.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="RFMAS.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="RFPassiveTrainAction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="RFRobotEventControl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="RFTTSSample.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="cJSON.c">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFEvaluationData.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFMYSQL.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFMySQLThread.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFPassiveTrain.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFPatientsManager.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFPatientsTrainData.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFPatientsTrainDetails.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="RFPatientsTrainInfo.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="PopupWidget.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="RFCharSet.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAVPlayer.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="UIChart.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="UIEMGChart.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="UIProgressEx.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="WkeWebkit.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="RFExcel.cpp">
+      <Filter>excell</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicPlayer.cpp">
+      <Filter>zplay</Filter>
+    </ClCompile>
+    <ClCompile Include="activecontrol.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="boundarydetection.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="contrlCard.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="emgcontrl.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="eyeControl.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="EyeMode.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="eyeTracking.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="pasvcontrl.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="robot.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\DAQSys.cpp">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\dom.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\expatls.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\ftconfig.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\ftrt.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\FTWrapper.cpp">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\node.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\stack.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmlparse.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmlrole.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmltok.c">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Log.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="RFLoginFailWindow.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="RFMainWindow.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="RFMAS.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="RFPassiveTrainAction.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="RFRobotEventControl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="RFTTSSample.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="cJSON.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFEvaluationData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFMYSQL.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFMySQLThread.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFPassiveTrain.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFPatientsManager.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFPatientsTrainData.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFPatientsTrainDetails.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="RFPatientsTrainInfo.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="PopupWidget.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="RFCharSet.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAVPlayer.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="UIChart.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="UIEMGChart.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="UIProgressEx.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="WkeWebkit.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="CApplication.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="CRange.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorkbook.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorkbooks.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorksheet.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorksheets.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="RFExcel.h">
+      <Filter>excell</Filter>
+    </ClInclude>
+    <ClInclude Include="libzplay.h">
+      <Filter>zplay</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicPlayer.h">
+      <Filter>zplay</Filter>
+    </ClInclude>
+    <ClInclude Include="activecontrol.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="boundarydetection.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="contrlCard.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="emgcontrl.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="EyeMode.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="pasvcontrl.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="robot.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\DAQSys.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\dom.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\ftconfig.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\ftrt.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\FTWrapper.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\stack.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\xmlparse.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\xmlrole.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Robot\ATI\ATIDAQ\xmltok.h">
+      <Filter>robot\ATIDAQ</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>robot\Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="iHealth.rc">
+      <Filter>res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
