@@ -30,7 +30,7 @@ pasvContrl::pasvContrl()
 	defaultCycleTime =16;
 	bDetect = NULL;
 	ctrlCard = NULL;
-	ctrlCard = new contrlCard;
+	ctrlCard = new ControlCard;
 	activectrl = NULL;
 	activectrl = new activecontrol;
 	//init();
@@ -150,8 +150,8 @@ void pasvContrl::beginMove(int index, boundaryDetection *byDetect)
 	}
 	
 	//打开电机，离合器
-	ctrlCard->ServeTheMotor(ON);
-	ctrlCard->SetClutch(CON);
+	ctrlCard->SetMotor(MotorOn);
+	ctrlCard->SetClutch(ClutchOn);
 	//关闭示教采集功能
 	isBeginTeach = false;
 	//打开线程
@@ -166,9 +166,9 @@ void pasvContrl::stopMove()
 {
     std::cout<<"passive motion end";
 	//关闭电机
-	ctrlCard->ServeTheMotor(OFF);
+	ctrlCard->SetMotor(MotorOff);
 	//关闭离合器
-	ctrlCard->SetClutch(COFF);
+	ctrlCard->SetClutch(ClutchOff);
     //关闭线程
 	isbeginMove = false;
 	isStopThread = true;
@@ -199,10 +199,10 @@ void pasvContrl::getSensorData(bool Travel_Switch[4])
 {
 	I32 DI_Group = 0; // If DI channel less than 32
 	I32 DI_Data = 0; // Di data
-	I32 di_ch[__MAX_DI_CH];
+	I32 di_ch[InputChannels];
 	I32 returnCode = 0; // Function return code
 	returnCode = APS_read_d_input(0, DI_Group, &DI_Data);
-	for (int i = 0; i < __MAX_DI_CH; i++)
+	for (int i = 0; i < InputChannels; i++)
 		di_ch[i] = ((DI_Data >> i) & 1);
 
 	Travel_Switch[0] = di_ch[16];//0号电机ORG信号-肘部电机
@@ -249,32 +249,32 @@ void pasvContrl::OnPASVHermite(double PosArm,double PosShoul,double Time)
 			
             arm_motor_cmd=PHermite(time_forwrd,armpos_forwrd,vel_forwrd,PASVHermite_time);
 			cmdVel[1] = (arm_motor_cmd - jointAngle[1])/TIMER_SLEEP;
-			ctrlCard->MotionMove(elbowAxisId, cmdVel[1], elbowSwitch);
+			ctrlCard->VelocityMove(ElbowAxisId, cmdVel[1]);
             //APS_absolute_move(elbowAxisId,arm_motor_cmd/Unit_Convert,15/Unit_Convert);
 
 
             shoul_motor_cmd=PHermite(time_forwrd,shoulpos_forwrd,vel_forwrd,PASVHermite_time);
 			cmdVel[0] = (shoul_motor_cmd - jointAngle[0]) / TIMER_SLEEP;
-			ctrlCard->MotionMove(shoudlerAxisId, cmdVel[0], shoulderSwitch);
+			ctrlCard->VelocityMove(ShoulderAxisId, cmdVel[0]);
             //APS_absolute_move(shoudlerAxisId,shoul_motor_cmd/Unit_Convert,15/Unit_Convert);
 
         }
 		else if ((PASVHermite_time > Time)&&(PASVHermite_time<(Time + 2)))
 		{
-			APS_stop_move(elbowAxisId);
-			APS_stop_move(shoudlerAxisId);
+			APS_stop_move(ElbowAxisId);
+			APS_stop_move(ShoulderAxisId);
 		}
         else if((PASVHermite_time<=(Time*2+2))&&(PASVHermite_time>=(Time+2)))
         {
             arm_motor_cmd=PHermite(time_back,armpos_back,vel_back,PASVHermite_time);
 			cmdVel[1] = (arm_motor_cmd - jointAngle[1]) / TIMER_SLEEP;
-			ctrlCard->MotionMove(elbowAxisId, cmdVel[1], elbowSwitch);
+			ctrlCard->VelocityMove(ElbowAxisId, cmdVel[1]);
             //APS_absolute_move(elbowAxisId,arm_motor_cmd/Unit_Convert,15/Unit_Convert);
 
 
             shoul_motor_cmd=PHermite(time_back,shoulpos_back,vel_back,PASVHermite_time);
 			cmdVel[0] = (shoul_motor_cmd - jointAngle[0]) / TIMER_SLEEP;
-			ctrlCard->MotionMove(shoudlerAxisId, cmdVel[0], shoulderSwitch);
+			ctrlCard->VelocityMove(ShoulderAxisId, cmdVel[0]);
             //APS_absolute_move(shoudlerAxisId,shoul_motor_cmd/Unit_Convert,15/Unit_Convert);
 
         }
@@ -366,7 +366,7 @@ void pasvContrl::Move_Sample()
 void pasvContrl::TeachCtrl()
 {
 	double Teach_Time = loop_count*0.1;
-	I32 Axis[2] = { shoudlerAxisId,elbowAxisId };
+	I32 Axis[2] = { ShoulderAxisId,ElbowAxisId };
 	if (loop_count % 10 == 0)
 	{
 		if (Target_count<moveTeach.Target_Vel[0].size() - 1)

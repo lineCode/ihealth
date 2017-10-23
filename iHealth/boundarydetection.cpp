@@ -39,7 +39,7 @@ boundaryDetection::boundaryDetection()
 	vel_i = 0;
     m_stop=false;
     ctrlCardOfTorque=NULL;
-    ctrlCardOfTorque=new contrlCard;
+    ctrlCardOfTorque=new ControlCard;
 	//创建一个匿名的互斥对象，且为有信号状态，
 	hMutex = CreateMutex(NULL, FALSE, NULL);	hAngleMutex= CreateMutex(NULL, FALSE, NULL);
 	hVelMutex= CreateMutex(NULL, FALSE, NULL);
@@ -102,10 +102,10 @@ void boundaryDetection::getSensorData()
 {
     I32 DI_Group = 0; // If DI channel less than 32
     I32 DI_Data = 0; // Di data
-    I32 di_ch[__MAX_DI_CH];
+    I32 di_ch[InputChannels];
     I32 returnCode = 0; // Function return code
     returnCode = APS_read_d_input(0, DI_Group, &DI_Data);
-    for (int i = 0; i < __MAX_DI_CH; i++)
+    for (int i = 0; i < InputChannels; i++)
         di_ch[i] = ((DI_Data >> i) & 1);
 
 	Travel_Switch[0]=di_ch[16];//0号电机ORG信号-肘部电机
@@ -204,8 +204,8 @@ void boundaryDetection::getEncoderData()
 	int ret = 0;
 	double raw_arm = 0;
 	double  raw_shoulder = 0;
-	ret = APS_get_position_f(elbowAxisId, &raw_arm);
-	ret = APS_get_position_f(shoudlerAxisId, &raw_shoulder);
+	ret = APS_get_position_f(ElbowAxisId, &raw_arm);
+	ret = APS_get_position_f(ShoulderAxisId, &raw_shoulder);
 	angle[0] = raw_shoulder*Unit_Convert;
 	angle[1] = raw_arm*Unit_Convert;
 }
@@ -262,12 +262,9 @@ void boundaryDetection::check() {
 
 	double timeTorque1 = fabs(Torque_Sensor[1]);
 	if (timeTorque1 > BrokenTorque0) {
-		ctrlCardOfTorque->ServeTheMotor(OFF);
-		ctrlCardOfTorque->SetClutch(COFF);
+		ctrlCardOfTorque->SetMotor(MotorOff);
+		ctrlCardOfTorque->SetClutch(ClutchOff);
 
-		char message_tracing[1024];
-		sprintf(message_tracing, "Shoulder Torque is out of range, BrokenTorque is %0.2f", timeTorque1);
-		LOG1(message_tracing);
 		int ret = ::MessageBox(m_hWnd, _T("肘部力矩值大于额定值，是否复位？点击取消关闭软件"), _T("力矩保护"), MB_YESNOCANCEL);
 		switch (ret) {
 		case IDYES:
@@ -286,12 +283,8 @@ void boundaryDetection::check() {
 
 	double timeTorque0 = fabs(Torque_Sensor[0]);
 	if (timeTorque0 > BrokenTorque1) {
-		ctrlCardOfTorque->ServeTheMotor(OFF);
-		ctrlCardOfTorque->SetClutch(COFF);
-
-		char message_tracing[1024];
-		sprintf(message_tracing, "Elbow Torque is out of range, BrokenTorque is %0.2f", timeTorque0);
-		LOG1(message_tracing);
+		ctrlCardOfTorque->SetMotor(MotorOff);
+		ctrlCardOfTorque->SetClutch(ClutchOff);
 
 		int ret = ::MessageBox(m_hWnd, _T("肩部力矩值大于额定值，是否复位？点击取消关闭软件"), _T("力矩保护"), MB_YESNOCANCEL);
 		switch (ret) {
@@ -313,12 +306,8 @@ void boundaryDetection::check() {
 	for (int i = 0; i < 4; i++) {
 		time_pull[i] = Pull_Sensor[i];
 		if (time_pull[i] > pull_limit[i]) {
-			ctrlCardOfTorque->ServeTheMotor(OFF);
-			ctrlCardOfTorque->SetClutch(COFF);
-
-			char message_tracing[1024];
-			sprintf(message_tracing, "pull sensor %d is out of range, BrokenTorque is %0.2f", i, timeTorque0);
-			LOG1(message_tracing);
+			ctrlCardOfTorque->SetMotor(MotorOff);
+			ctrlCardOfTorque->SetClutch(ClutchOff);
 
 			int ret = ::MessageBox(m_hWnd, _T("钢丝绳拉力大于额定值，是否复位？点击取消关闭软件"), _T("拉力保护"), MB_YESNOCANCEL);
 			switch (ret) {

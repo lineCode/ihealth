@@ -1,8 +1,8 @@
 #ifndef PASVCONTRL_H
 #define PASVCONTRL_H
-#include"contrlCard.h"
-#include"boundarydetection.h"
-#include"activecontrol.h"
+#include "control_card.hpp"
+#include "boundarydetection.h"
+#include "activecontrol.h"
 #include <vector>
 #include <queue>
 //#include <mutex>
@@ -63,7 +63,7 @@ private:
 	HWND m_hWnd = NULL;
     int timecount;
     double PASVHermite_time;
-	contrlCard *ctrlCard;
+	ControlCard *ctrlCard;
 	boundaryDetection * bDetect;
 	activecontrol *activectrl;
 	Teach currentTeach;

@@ -10,7 +10,7 @@ emgcontrl::emgcontrl()
     isBeginMove=false;
     bDetect=NULL;
     ctrlCard=NULL;
-    ctrlCard=new contrlCard;
+    ctrlCard=new ControlCard;
 	dataMutex= CreateMutex(NULL, FALSE, NULL);
     //qDebug()<<"emgcontrl construct done!";
 }
@@ -48,8 +48,8 @@ void emgcontrl::acquistRawData()
 
 	 double raw_arm = 0;
 	 double raw_shoulder = 0;
-	 APS_get_position_f(elbowAxisId, &raw_arm);
-	 APS_get_position_f(shoudlerAxisId, &raw_shoulder);
+	 APS_get_position_f(ElbowAxisId, &raw_arm);
+	 APS_get_position_f(ShoulderAxisId, &raw_shoulder);
 	 pRawData[4] = raw_shoulder*Unit_Convert;
 	 pRawData[5] = raw_arm*Unit_Convert;
 
@@ -121,14 +121,14 @@ double emgcontrl::getRawData(int index)
 }
 void emgcontrl::beginMove()
 {
-    ctrlCard->ServeTheMotor(ON);
-    ctrlCard->SetClutch(CON);
+    ctrlCard->SetMotor(MotorOn);
+    ctrlCard->SetClutch(ClutchOn);
     isBeginMove=true;
 }
 void emgcontrl::stopMove()
 {
-    ctrlCard->ServeTheMotor(OFF);
-    ctrlCard->SetClutch(COFF);
+    ctrlCard->SetMotor(MotorOff);
+    ctrlCard->SetClutch(ClutchOff);
     isBeginMove=false;
 }
 void emgcontrl::emgContrl()
@@ -147,7 +147,7 @@ void emgcontrl::emgContrl()
     double elbowVel=RawData[0]-RawData[1];
     double shoulderVel=RawData[2]-RawData[3];
 	ReleaseMutex(dataMutex);
-    ctrlCard->MotionMove(shoudlerAxisId,shoulderVel,shoulderSwitch);
-    ctrlCard->MotionMove(elbowAxisId,elbowVel,elbowSwitch);
+    ctrlCard->VelocityMove(ShoulderAxisId, shoulderVel);
+    ctrlCard->VelocityMove(ElbowAxisId, elbowVel);
 }
 

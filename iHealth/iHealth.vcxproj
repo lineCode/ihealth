@@ -52,7 +52,7 @@
     <OutDir>../Release\</OutDir>
     <IntDir>../Cache\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(solutiondir)include\mysql;$(solutiondir)include\wke;$(IncludePath)</IncludePath>
+    <IncludePath>$(projectdir)test;$(solutiondir)include\mysql;$(solutiondir)include\wke;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,7 +114,7 @@
     <ClCompile Include="activecontrol.cpp" />
     <ClCompile Include="boundarydetection.cpp" />
     <ClCompile Include="cJSON.c" />
-    <ClCompile Include="contrlCard.cpp" />
+    <ClCompile Include="control_card.cpp" />
     <ClCompile Include="emgcontrl.cpp" />
     <ClCompile Include="eyeControl.cpp" />
     <ClCompile Include="EyeMode.cpp" />
@@ -145,6 +145,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="test\robot_test.cpp" />
     <ClCompile Include="UIAVPlayer.cpp" />
     <ClCompile Include="UIChart.cpp" />
     <ClCompile Include="UIEMGChart.cpp" />
@@ -165,7 +166,7 @@
     <ClInclude Include="boundarydetection.h" />
     <ClInclude Include="CApplication.h" />
     <ClInclude Include="cJSON.h" />
-    <ClInclude Include="contrlCard.h" />
+    <ClInclude Include="control_card.hpp" />
     <ClInclude Include="CRange.h" />
     <ClInclude Include="CWorkbook.h" />
     <ClInclude Include="CWorkbooks.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="robot.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="test\robot_test.hpp" />
     <ClInclude Include="UIAVPlayer.h" />
     <ClInclude Include="UIChart.h" />
     <ClInclude Include="UIEMGChart.h" />

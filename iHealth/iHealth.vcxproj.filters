@@ -34,6 +34,9 @@
     <Filter Include="robot\Math">
       <UniqueIdentifier>{44fa5750-eaee-4116-93b7-802c7cb6883f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{ea28b188-ac1b-4d28-a9c6-0c37e83874fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="iHealth.cpp">
@@ -123,9 +126,6 @@
     <ClCompile Include="boundarydetection.cpp">
       <Filter>robot</Filter>
     </ClCompile>
-    <ClCompile Include="contrlCard.cpp">
-      <Filter>robot</Filter>
-    </ClCompile>
     <ClCompile Include="emgcontrl.cpp">
       <Filter>robot</Filter>
     </ClCompile>
@@ -176,6 +176,12 @@
     </ClCompile>
     <ClCompile Include="..\Lib\Robot\ATI\ATIDAQ\xmltok.c">
       <Filter>robot\ATIDAQ</Filter>
+    </ClCompile>
+    <ClCompile Include="test\robot_test.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="control_card.cpp">
+      <Filter>robot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -290,9 +296,6 @@
     <ClInclude Include="boundarydetection.h">
       <Filter>robot</Filter>
     </ClInclude>
-    <ClInclude Include="contrlCard.h">
-      <Filter>robot</Filter>
-    </ClInclude>
     <ClInclude Include="emgcontrl.h">
       <Filter>robot</Filter>
     </ClInclude>
@@ -334,6 +337,12 @@
     </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>robot\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="test\robot_test.hpp">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="control_card.hpp">
+      <Filter>robot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

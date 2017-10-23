@@ -1,7 +1,7 @@
 #ifndef EMGCONTRL_H
 #define EMGCONTRL_H
 #include<NIDAQmx.h>
-#include"contrlCard.h"
+#include"control_card.hpp"
 #include"boundarydetection.h"
 #include<vector>
 class emgcontrl
@@ -27,7 +27,7 @@ private:
     bool *switchData;
     HANDLE dataMutex;
     boundaryDetection *bDetect;
-    contrlCard *ctrlCard;
+    ControlCard *ctrlCard;
     std::vector<double>rawData[4];
 };
 

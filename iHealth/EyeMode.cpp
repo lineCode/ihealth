@@ -1,7 +1,7 @@
 #include "EyeMode.h"
 #include "Log.h"
 
-EyeMode::EyeMode(boundaryDetection* _bound, contrlCard* _card) :
+EyeMode::EyeMode(boundaryDetection* _bound, ControlCard* _card) :
  isRunning(false),
  isCalibrated(false),
  isSendingData(false),
@@ -36,16 +36,16 @@ EyeMode::~EyeMode()
 
 void EyeMode::start()
 {
-	pControlCard->SetClutch(CON);
-	pControlCard->ServeTheMotor(ON);
+	pControlCard->SetClutch(ClutchOn);
+	pControlCard->SetMotor(MotorOn);
 	isSendingData = true;
 }
 
 void EyeMode::stop()
 {
 	if (isSendingData) {
-		// pControlCard->SetClutch(COFF);
-		pControlCard->ServeTheMotor(OFF);
+		// pControlCard->SetClutch(ClutchOff);
+		pControlCard->SetMotor(MotorOff);
 
 	}
 	isSendingData = false;
@@ -169,8 +169,8 @@ unsigned int __stdcall EyeThread(PVOID pParam)
 				elbowSwitch[i] = swithData[i];
 				shoulderSwitch[i] = swithData[2 + i];
 			}
-			eyeMode->pControlCard->MotionMove(elbowAxisId, velocity[1], elbowSwitch);
-			eyeMode->pControlCard->MotionMove(shoudlerAxisId, velocity[0],shoulderSwitch);
+			eyeMode->pControlCard->VelocityMove(ElbowAxisId, velocity[1]);
+			eyeMode->pControlCard->VelocityMove(ShoulderAxisId, velocity[0]);
 			char message_tracing[1024];
 			sprintf(message_tracing, "In eyectrl Mode output elbow Vel is %0.2f,elbow Swith is %d-%d", velocity[1], elbowSwitch[0], elbowSwitch[1]);
 			LOG1(message_tracing);

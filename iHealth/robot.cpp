@@ -5,7 +5,7 @@
 #define RESET_TIMER 100
 MMRESULT Mtimer_ID=0;
 UINT wAccuracy=0;
-contrlCard ORZCtrlCard;
+ControlCard ORZCtrlCard;
 
 robot::robot()
 {
@@ -16,7 +16,7 @@ robot::robot()
 	bDetect->SetRobot(this);
 
 	ctrlCard = NULL;
-	ctrlCard = new contrlCard;
+	ctrlCard = new ControlCard;
 	activeCtrl = NULL;
 	activeCtrl = new activecontrol;
 	EMGContrl = NULL;
@@ -208,8 +208,8 @@ void robot::getRightRGB24(unsigned char* data, int _width, int _height)
 void robot::resetPos()
 {
 	//打开电机，离合器
-	ctrlCard->ServeTheMotor(ON);
-	ctrlCard->SetClutch(CON);
+	ctrlCard->SetMotor(MotorOn);
+	ctrlCard->SetClutch(ClutchOn);
 	// 开启全局定时器;
 	TIMECAPS tc;
 	if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) == TIMERR_NOERROR)
@@ -272,10 +272,10 @@ void getSensorData(bool Travel_Switch[4])
 {
 	I32 DI_Group = 0; // If DI channel less than 32
 	I32 DI_Data = 0; // Di data
-	I32 di_ch[__MAX_DI_CH];
+	I32 di_ch[InputChannels];
 	I32 returnCode = 0; // Function return code
 	returnCode = APS_read_d_input(0, DI_Group, &DI_Data);
-	for (int i = 0; i < __MAX_DI_CH; i++)
+	for (int i = 0; i < InputChannels; i++)
 		di_ch[i] = ((DI_Data >> i) & 1);
 
 	Travel_Switch[0] = di_ch[16];//0号电机ORG信号-肘部电机
@@ -294,35 +294,32 @@ void move2ORZ()
 	//判断0号电机-肩部 是否在零位，如果不是则回零位运动开始，如果是则停止运动
 	if (RobotORZ[2] != true)
 	{
-		APS_vel(shoudlerAxisId, 1, 5 / Unit_Convert, 0);
+		APS_vel(ShoulderAxisId, 1, 5 / Unit_Convert, 0);
 	}
 	else
 	{
-		APS_stop_move(shoudlerAxisId);
+		APS_stop_move(ShoulderAxisId);
 	}
 	//判断1号电机-肘部是否在零位，如果不是则回零位运动开始，如果是则停止运动
 	if (RobotORZ[0] != true)
 	{
-		APS_vel(elbowAxisId, 1, 5 / Unit_Convert, 0);
+		APS_vel(ElbowAxisId, 1, 5 / Unit_Convert, 0);
 	}
 	else
 	{
-		APS_stop_move(elbowAxisId);
+		APS_stop_move(ElbowAxisId);
 	}
 
 	if ((RobotORZ[0] == true) && (RobotORZ[2] == true))
 	{
 		//到点以后关电机
-		ORZCtrlCard.ServeTheMotor(OFF);
-		ORZCtrlCard.SetClutch(COFF);
+		ORZCtrlCard.SetMotor(MotorOff);
+		ORZCtrlCard.SetClutch(ClutchOff);
 		ORZCtrlCard.SetParamZero();
 		//停止定时器
 		if (Mtimer_ID != 0)
 			timeKillEvent(Mtimer_ID);
 		if (wAccuracy != 0)
 			timeEndPeriod(wAccuracy);
-		char message_tracing[1024];
-		sprintf(message_tracing, "Reset position completed");
-		LOG1(message_tracing);
 	}
 }

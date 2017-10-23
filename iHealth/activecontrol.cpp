@@ -30,7 +30,7 @@ activecontrol::activecontrol()
 	m_stop =false;
 	isMove = false;
     ctrlCard=NULL;
-    ctrlCard=new contrlCard;
+    ctrlCard=new ControlCard;
     for(int i=0;i<2;i++)
         cmdVel[i]=0;
 }
@@ -89,8 +89,8 @@ void activecontrol::stopAcquisit()
 void activecontrol::startMove(boundaryDetection *Angle)
 {
     
-    ctrlCard->ServeTheMotor(ON);
-    ctrlCard->SetClutch(CON);
+    ctrlCard->SetMotor(MotorOn);
+    ctrlCard->SetClutch(ClutchOn);
 	bDetect =Angle;
 	isMove = true;
 	std::string file_name = get_file_name_by_localtime();
@@ -100,8 +100,8 @@ void activecontrol::startMove(boundaryDetection *Angle)
 }
 void activecontrol::stopMove()
 {
-	ctrlCard->ServeTheMotor(OFF);
-	//ctrlCard->SetClutch(COFF);
+	ctrlCard->SetMotor(MotorOff);
+	//ctrlCard->SetClutch(ClutchOff);
 	isMove = false;
 	if (active_data_record) {
 		active_data_record.close();
@@ -220,9 +220,6 @@ void activecontrol::FiltedVolt2Vel(double FiltedData[6])
     Ud_Shoul=Vel(0,0);
     Ud_Arm=Vel(1,0);
 
-	char message_tracing[1024];
-	sprintf(message_tracing, "ActiveControl, Ud_Shoul is %0.2f,Ud_Arm is %0.2f", Ud_Shoul, Ud_Arm);
-	LOG1(message_tracing);
     if (fabs(Ud_Arm)>15)
     {
         Ud_Arm=10;
@@ -244,8 +241,8 @@ void activecontrol::FTSContrl()
 		elbowSwitch[i] = swithData[i];
 		shoulderSwitch[i] = swithData[2 + i];
 	}
-	ctrlCard->MotionMove(shoudlerAxisId, Ud_Shoul, shoulderSwitch);
-	ctrlCard->MotionMove(elbowAxisId, Ud_Arm, elbowSwitch);
+	ctrlCard->VelocityMove(ShoulderAxisId, Ud_Shoul);
+	ctrlCard->VelocityMove(ElbowAxisId, Ud_Arm);
 }
 
 void activecontrol::getRawAngle(double angle[2])
@@ -253,8 +250,8 @@ void activecontrol::getRawAngle(double angle[2])
 	int ret = 0;
 	double raw_arm = 0;
 	double raw_shoulder = 0;
-	ret = APS_get_position_f(elbowAxisId, &raw_arm);
-	ret = APS_get_position_f(shoudlerAxisId, &raw_shoulder);
+	ret = APS_get_position_f(ElbowAxisId, &raw_arm);
+	ret = APS_get_position_f(ShoulderAxisId, &raw_shoulder);
 	angle[0] = raw_shoulder*Unit_Convert;
 	angle[1] = raw_arm*Unit_Convert;
 }
