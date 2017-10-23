@@ -10,7 +10,7 @@
 *.ilk
 *.exp
 *.avi
-
+*.log
 
 ipch/
 Cache/
