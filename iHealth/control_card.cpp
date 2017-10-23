@@ -97,8 +97,8 @@ void ControlCard::SetMotor(bool onOroff ) {
 
 void ControlCard::VelMove(short AxisId, double Vel) {	
     double afterConvert = (fabs(Vel) / Unit_Convert);
-	if (afterConvert > 15 / Unit_Convert) {
-		afterConvert = 15 / Unit_Convert;
+	if (afterConvert > MaxVel / Unit_Convert) {
+		afterConvert = MaxVel / Unit_Convert;
 	}
 
     //如果电机没开，打开电机
@@ -181,8 +181,8 @@ void ControlCard::ResetPosition() {
 	SetClutch(ClutchOn);
 	UpdateDigitInput();
 	while (!IsReset()) {
-		VelocityMove(ElbowAxisId, -4);
-		VelocityMove(ShoulderAxisId, -4);
+		VelocityMove(ElbowAxisId, ResetVel);
+		VelocityMove(ShoulderAxisId, ResetVel);
 	}
 	SetMotor(MotorOff);
 	SetClutch(ClutchOff);
