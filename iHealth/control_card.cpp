@@ -1,4 +1,4 @@
-﻿#include "control_card.hpp"
+﻿#include "control_card.h"
 
 #include <cmath>
 

@@ -115,6 +115,7 @@
     <ClCompile Include="boundarydetection.cpp" />
     <ClCompile Include="cJSON.c" />
     <ClCompile Include="control_card.cpp" />
+    <ClCompile Include="data_acquisition.cpp" />
     <ClCompile Include="emgcontrl.cpp" />
     <ClCompile Include="eyeControl.cpp" />
     <ClCompile Include="EyeMode.cpp" />
@@ -166,12 +167,13 @@
     <ClInclude Include="boundarydetection.h" />
     <ClInclude Include="CApplication.h" />
     <ClInclude Include="cJSON.h" />
-    <ClInclude Include="control_card.hpp" />
+    <ClInclude Include="control_card.h" />
     <ClInclude Include="CRange.h" />
     <ClInclude Include="CWorkbook.h" />
     <ClInclude Include="CWorkbooks.h" />
     <ClInclude Include="CWorksheet.h" />
     <ClInclude Include="CWorksheets.h" />
+    <ClInclude Include="data_acquisition.h" />
     <ClInclude Include="emgcontrl.h" />
     <ClInclude Include="EyeMode.h" />
     <ClInclude Include="libzplay.h" />
@@ -200,7 +202,7 @@
     <ClInclude Include="robot.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="test\robot_test.hpp" />
+    <ClInclude Include="test\robot_test.h" />
     <ClInclude Include="UIAVPlayer.h" />
     <ClInclude Include="UIChart.h" />
     <ClInclude Include="UIEMGChart.h" />

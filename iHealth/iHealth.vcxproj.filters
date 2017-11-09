@@ -183,6 +183,9 @@
     <ClCompile Include="control_card.cpp">
       <Filter>robot</Filter>
     </ClCompile>
+    <ClCompile Include="data_acquisition.cpp">
+      <Filter>robot</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Log.h">
@@ -338,11 +341,14 @@
     <ClInclude Include="Matrix.h">
       <Filter>robot\Math</Filter>
     </ClInclude>
-    <ClInclude Include="test\robot_test.hpp">
-      <Filter>test</Filter>
-    </ClInclude>
-    <ClInclude Include="control_card.hpp">
+    <ClInclude Include="control_card.h">
       <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="data_acquisition.h">
+      <Filter>robot</Filter>
+    </ClInclude>
+    <ClInclude Include="test\robot_test.h">
+      <Filter>test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 #pragma once
-#include"control_card.hpp"
+#include"control_card.h"
 #include"eyeControl.h"
 //#include<thread>
 #include <process.h>

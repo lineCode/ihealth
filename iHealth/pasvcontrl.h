@@ -1,6 +1,6 @@
 #ifndef PASVCONTRL_H
 #define PASVCONTRL_H
-#include "control_card.hpp"
+#include "control_card.h"
 #include "boundarydetection.h"
 #include "activecontrol.h"
 #include <vector>

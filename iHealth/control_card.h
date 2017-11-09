@@ -1,11 +1,9 @@
 ﻿#pragma once
 // Adlink head file////////
-#include "APS168.h"
-#include "ErrorCodeDef.h"
-#include "APS_define.h"
-#include "type_def.h"
-
-#include <NIDAQmx.h>
+#include <APS168.h>
+#include <ErrorCodeDef.h>
+#include <APS_define.h>
+#include <type_def.h>
 
 static const bool MotorOn = 1;
 static const bool MotorOff = 0;

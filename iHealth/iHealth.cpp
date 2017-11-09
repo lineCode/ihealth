@@ -1,12 +1,11 @@
 // iHealth.cpp : 定义控制台应用程序的入口点。
-//
-
 #include "stdafx.h"
 #include "RFMainWindow.h"
 #include "WkeWebkit.h"
 #include "Log.h"
 
-#include "robot_test.hpp"
+#include "robot_test.h"
+
 
 long   __stdcall   ExcuteExceptionHandler(_EXCEPTION_POINTERS*   excp)   
 {   
@@ -41,6 +40,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*l
 	pFrame = NULL;
 	::CoUninitialize();
 
-//robot_test_start();
+	//robot_test_start();
 	return 0;
 }

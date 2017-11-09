@@ -1,7 +1,7 @@
 #pragma once
 #include"pasvcontrl.h"
 #include "boundarydetection.h"
-#include "control_card.hpp"
+#include "control_card.h"
 #include"activecontrol.h"
 #include"emgcontrl.h"
 #include "EyeMode.h"

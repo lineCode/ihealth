@@ -4,7 +4,7 @@
 #include <unsupported/Eigen/MatrixFunctions>*/
 #include "FTWrapper.h"
 #include "matrix.h"
-#include "control_card.hpp"
+#include "control_card.h"
 #include "boundarydetection.h"
 
 class activecontrol

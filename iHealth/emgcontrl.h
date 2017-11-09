@@ -1,7 +1,7 @@
 #ifndef EMGCONTRL_H
 #define EMGCONTRL_H
 #include<NIDAQmx.h>
-#include"control_card.hpp"
+#include"control_card.h"
 #include"boundarydetection.h"
 #include<vector>
 class emgcontrl
