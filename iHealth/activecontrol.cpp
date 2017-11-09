@@ -119,7 +119,7 @@ void activecontrol::timerAcquisit()
     FiltedVolt2Vel(filtedData);
 
 	write_current_time();
-	write_force_sensor(readings);
+	write_force_sensor(distData);
 	write_angle();
 
 	if (isMove) {
@@ -335,8 +335,11 @@ void write_record_header() {
 	if (!active_data_record) {
 		return;
 	}
-	active_data_record << std::setw(12) << "时间" << std::setw(56) << "六维力传感器读数" << std::setw(53)
-		<< "肩部关节角度" << std::setw(20) << "肘部关节角度" << "\n";
+	active_data_record << std::setw(24) << "时间" << std::setw(15) << "Tx(N*m)" 
+		<< std::setw(15) << "Ty(N*m)" << std::setw(15) << "Tz(N*m)" 
+		<< std::setw(15) << "Fx(N)" << std::setw(15) << "Fy(N)" 
+		<< std::setw(15) << "Fz(N)"
+		<< std::setw(20) << "肩部关节角度(deg)" << std::setw(20) << "肘部关节角度(deg)" << "\n";
 }
 
 void write_current_time() {
@@ -344,7 +347,7 @@ void write_current_time() {
 		return;
 	}
 	std::string s = get_current_time();
-	active_data_record << std::left << std::setw(24) << s;
+	active_data_record << std::setw(24) << s;
 }
 
 void write_force_sensor(const double *data) {
