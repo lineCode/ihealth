@@ -45,6 +45,8 @@ private:
 
 private:
 	static const I32 InvalidBoardId = -1;
+	static const double ResetVel;
+	static const double MaxVel;
 
 	HWND m_hWnd = NULL;
     bool axis_status_;
@@ -58,6 +60,8 @@ private:
 	I32 total_axis_;
 	I32 start_axis_id_;
 	I32 board_id_;
-	
 };
+
+const double ControlCard::ResetVel = -4.0;
+const double ControlCard::MaxVel = 5.0;
 
