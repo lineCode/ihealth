@@ -22,7 +22,7 @@ ControlCard::ControlCard()
 	  at_shoulder_limit_(false),
 	  at_elbow_zero_(false),
 	  at_elbow_limit_(false),
-	  emergency_stop_status_(false) {}
+	  emergency_stop_status_(true) {}
 
 ControlCard::~ControlCard() {}
 
@@ -204,3 +204,27 @@ void ControlCard::Set_hWnd(HWND hWnd) {
 	m_hWnd = hWnd;
 }
 
+bool ControlCard::AtShoulderZero() {
+	UpdateDigitInput();
+	return at_shoulder_zero_;
+}
+
+bool ControlCard::AtShoulderLimit() {
+	UpdateDigitInput();
+	return at_shoulder_limit_;
+}
+
+bool ControlCard::AtElbowZero() {
+	UpdateDigitInput();
+	return at_elbow_zero_;
+}
+
+bool ControlCard::AtElbowLimit() {
+	UpdateDigitInput();
+	return at_elbow_limit_;
+}
+
+bool ControlCard::IsEmergencyStop() {
+	UpdateDigitInput();
+	return emergency_stop_status_;
+}

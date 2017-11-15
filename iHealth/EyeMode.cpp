@@ -169,6 +169,8 @@ unsigned int __stdcall EyeThread(PVOID pParam)
 				elbowSwitch[i] = swithData[i];
 				shoulderSwitch[i] = swithData[2 + i];
 			}
+			
+
 			eyeMode->pControlCard->VelocityMove(ElbowAxisId, velocity[1]);
 			eyeMode->pControlCard->VelocityMove(ShoulderAxisId, velocity[0]);
 			char message_tracing[1024];

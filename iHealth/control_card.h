@@ -31,13 +31,18 @@ public:
     void SetParamZero();
 	void ResetPosition();
 	void Set_hWnd(HWND hWnd);
+	bool AtShoulderZero();
+	bool AtShoulderLimit();
+	bool AtElbowZero();
+	bool AtElbowLimit();
+	bool IsEmergencyStop();
 
 private:
 	ControlCard();
 	void LoadAxisParam(I32 board_id);
-	void UpdateDigitInput();
 	void VelMove(short AxisId, double Vel);
 	void SetLimitSwitchsByAxisId(I32 axis_id, bool *limit_switchs);
+	void UpdateDigitInput();
 	bool IsReset();
 	bool NoError(I32 error_code);
 	bool OutOfWorkingArea(double vel, bool *limit_switches);

@@ -238,8 +238,7 @@ void boundaryDetection::getJointVel()
 	}	
 	vel_i++;
 }
-double* boundaryDetection::getVel()
-{
+double* boundaryDetection::getVel() {
 	WaitForSingleObject(hVelMutex, INFINITE);
 	double *output = vel;
 	ReleaseMutex(hVelMutex);
