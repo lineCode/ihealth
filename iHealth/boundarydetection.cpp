@@ -38,17 +38,12 @@ boundaryDetection::boundaryDetection()
 	m_emergency_stop_status = true;
 	vel_i = 0;
     m_stop=false;
-    ctrlCardOfTorque=NULL;
-    ctrlCardOfTorque=new ControlCard;
 	//创建一个匿名的互斥对象，且为有信号状态，
 	hMutex = CreateMutex(NULL, FALSE, NULL);	hAngleMutex= CreateMutex(NULL, FALSE, NULL);
 	hVelMutex= CreateMutex(NULL, FALSE, NULL);
 }
 boundaryDetection::~boundaryDetection()
 {
-    //qDebug()<<"boundaryDetection destroyed.";
-    if(ctrlCardOfTorque!=NULL)
-        delete ctrlCardOfTorque;  
 	stopBydetect();
 }
 unsigned int __stdcall BydetectThreadFun(PVOID pParam)
@@ -262,8 +257,8 @@ void boundaryDetection::check() {
 
 	double timeTorque1 = fabs(Torque_Sensor[1]);
 	if (timeTorque1 > BrokenTorque0) {
-		ctrlCardOfTorque->SetMotor(MotorOff);
-		ctrlCardOfTorque->SetClutch(ClutchOff);
+		ControlCard::GetInstance().SetMotor(MotorOff);
+		ControlCard::GetInstance().SetClutch(ClutchOff);
 
 		int ret = ::MessageBox(m_hWnd, _T("肘部力矩值大于额定值，是否复位？点击取消关闭软件"), _T("力矩保护"), MB_YESNOCANCEL);
 		switch (ret) {
@@ -283,8 +278,8 @@ void boundaryDetection::check() {
 
 	double timeTorque0 = fabs(Torque_Sensor[0]);
 	if (timeTorque0 > BrokenTorque1) {
-		ctrlCardOfTorque->SetMotor(MotorOff);
-		ctrlCardOfTorque->SetClutch(ClutchOff);
+		ControlCard::GetInstance().SetMotor(MotorOff);
+		ControlCard::GetInstance().SetClutch(ClutchOff);
 
 		int ret = ::MessageBox(m_hWnd, _T("肩部力矩值大于额定值，是否复位？点击取消关闭软件"), _T("力矩保护"), MB_YESNOCANCEL);
 		switch (ret) {
@@ -306,8 +301,8 @@ void boundaryDetection::check() {
 	for (int i = 0; i < 4; i++) {
 		time_pull[i] = Pull_Sensor[i];
 		if (time_pull[i] > pull_limit[i]) {
-			ctrlCardOfTorque->SetMotor(MotorOff);
-			ctrlCardOfTorque->SetClutch(ClutchOff);
+			ControlCard::GetInstance().SetMotor(MotorOff);
+			ControlCard::GetInstance().SetClutch(ClutchOff);
 
 			int ret = ::MessageBox(m_hWnd, _T("钢丝绳拉力大于额定值，是否复位？点击取消关闭软件"), _T("拉力保护"), MB_YESNOCANCEL);
 			switch (ret) {

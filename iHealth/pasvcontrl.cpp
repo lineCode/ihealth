@@ -29,8 +29,6 @@ pasvContrl::pasvContrl()
     PASVHermite_time=0;
 	defaultCycleTime =16;
 	bDetect = NULL;
-	ctrlCard = NULL;
-	ctrlCard = new ControlCard;
 	activectrl = NULL;
 	activectrl = new activecontrol;
 	//init();

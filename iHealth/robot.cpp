@@ -5,25 +5,20 @@
 #define RESET_TIMER 100
 MMRESULT Mtimer_ID=0;
 UINT wAccuracy=0;
-ControlCard ORZCtrlCard;
 
-robot::robot()
-{
+robot::robot() {
 	pasvMode = NULL;
 	pasvMode = new pasvContrl;
 	bDetect = NULL;
 	bDetect = new boundaryDetection;
 	bDetect->SetRobot(this);
-
-	ctrlCard = NULL;
-	ctrlCard = new ControlCard;
 	activeCtrl = NULL;
 	activeCtrl = new activecontrol;
 	EMGContrl = NULL;
 	EMGContrl = new emgcontrl;
-	ctrlCard->Initial();
+	ControlCard::GetInstance().Initial();
 	eyeModeCtl = NULL;
-	eyeModeCtl = new EyeMode(bDetect, ctrlCard);
+	eyeModeCtl = new EyeMode(bDetect, &ControlCard::GetInstance());
 	
 	bDetect->startBydetect();
 	m_isActiveModeStart = false;
@@ -31,15 +26,12 @@ robot::robot()
 	m_isPasvModeStart = false;
 }
 
-robot::~robot()
-{
+robot::~robot() {
 	if (pasvMode != NULL)
 		delete pasvMode;
 	if (bDetect != NULL) {
 		delete bDetect;
 	}
-	if (ctrlCard != NULL)
-		delete ctrlCard;
 	if (NULL != activeCtrl)
 		delete activeCtrl;
 	if (NULL != EMGContrl)
@@ -47,173 +39,122 @@ robot::~robot()
 	if (NULL != eyeModeCtl)
 		delete eyeModeCtl;
 }
-VOID  CALLBACK OnEyeTimeFunc(UINT wTimerID, UINT msg, DWORD dwUser, DWORD dw1, DWORD dw2)
-{
+VOID  CALLBACK OnEyeTimeFunc(UINT wTimerID, UINT msg, DWORD dwUser, DWORD dw1, DWORD dw2) {
 	move2ORZ();
 }
 
-void robot::clearPasvMove()
-{
+void robot::clearPasvMove() {
 	pasvMode->clearMove();
 }
 
-void robot::pushPasvMove(const Teach& move)
-{
+void robot::pushPasvMove(const Teach& move) {
 	pasvMode->pushMove(move);
 }
 
-bool robot::isMoving()
-{
+bool robot::isMoving() {
 	return pasvMode->Moving();
 }
 
-void robot::startPasvMove(int index)
-{
-	//if (ctrlCard->IsCardInitial()) {
+void robot::startPasvMove(int index) {
 	if (m_isPasvModeStart == false) {
 		m_isPasvModeStart = true;
 		pasvMode->beginMove(index, bDetect);
 	}
-	//}
 }
-void robot::stopPasvMove()
-{
-	//if (ctrlCard->IsCardInitial()) {
+void robot::stopPasvMove() {
 	if (m_isPasvModeStart == true) {
 		m_isPasvModeStart = false;
 		pasvMode->stopMove();
 	}
-	//}
 }
-void robot::getCurrentPasvMove(Teach& teach)
-{
-	//if (ctrlCard->IsCardInitial()) {
-		pasvMode->getCurrentMove(teach);
-	//}
+void robot::getCurrentPasvMove(Teach& teach) {
+	pasvMode->getCurrentMove(teach);
 }
-void robot::startTeach()
-{
-	//if (ctrlCard->IsCardInitial()) {
-		pasvMode->startTeach(bDetect);
-	//}
+void robot::startTeach() {
+	pasvMode->startTeach(bDetect);
 }
-void robot::stopTeach()
-{
-	//if (ctrlCard->IsCardInitial()) {
-		pasvMode->stopTeach();
-	//}
+void robot::stopTeach() {
+	pasvMode->stopTeach();
 }
 
-void robot::getCurrentTeach(Teach& teach)
-{
-	//if (ctrlCard->IsCardInitial()) {
-		pasvMode->getCurrentTeach(teach);
-	//}
+void robot::getCurrentTeach(Teach& teach) {
+	pasvMode->getCurrentTeach(teach);
 }
 
-void robot::addPasvMove()
-{
-	//if (ctrlCard->IsCardInitial()) {
-		pasvMode->addMovement();
-	//}
+void robot::addPasvMove() {
+	pasvMode->addMovement();
 }
-void robot::startActiveMove()
-{
-	//if (ctrlCard->IsCardInitial()) {
+void robot::startActiveMove() {
 	if (!m_isActiveModeStart) {
 		activeCtrl->startMove(bDetect);
 		m_isActiveModeStart = true;
 	}
-	//}
 }
-void robot::stopActiveMove()
-{
-	//if (ctrlCard->IsCardInitial()) {
+void robot::stopActiveMove() {	
 	if (m_isActiveModeStart) {
 		activeCtrl->stopMove();
 		m_isActiveModeStart = false;
 	}
-	//}
 }
-void robot::getAngle(double angles[2])
-{
-	//double *output = NULL;
-	//if (ctrlCard->IsCardInitial()) {
+void robot::getAngle(double angles[2]) {
 	activeCtrl->getRawAngle(angles);
-	//}
-	//return output;
 }
 
-double robot::getWirstForce()
-{
+double robot::getWirstForce() {
 	double output;
-	
 	output = activeCtrl->getWirstForce();
-	
 	return output;
 }
-bool robot::isFire()
-{
-	//if (ctrlCard->IsCardInitial()) {
-		return activeCtrl->isFire();
-	//}
-	//return false;
+bool robot::isFire() {
+	return activeCtrl->isFire();
 }
 
-void robot::getPlanePos(short w, short h, double XY[2])
-{
+void robot::getPlanePos(short w, short h, double XY[2]) {
 	activeCtrl->getEndsXY(w, h, XY);
 }
 
-void robot::setDamping(float FC/* =0.1 */)
-{
+void robot::setDamping(float FC/* =0.1 */) {
 	activeCtrl->setDamping(FC);
 }
 
-
-void robot::setEyeVel(double factor)
-{
+void robot::setEyeVel(double factor) {
 	eyeModeCtl->setVel(factor);
 }
-void robot::eyeCalibrate()
-{
+
+void robot::eyeCalibrate() {
 	eyeModeCtl->calibrate();
 }
-void robot::startEyeMove()
-{
+
+void robot::startEyeMove() {
 	eyeModeCtl->start();
 }
-void robot::stopEyeMove()
-{
+
+void robot::stopEyeMove() {
 	eyeModeCtl->stop();
 }
-void robot::enterEyeMode()
-{
+
+void robot::enterEyeMode() {
 	eyeModeCtl->enter();
 }
-void robot::exitEyeMode()
-{
+
+void robot::exitEyeMode() {
 	eyeModeCtl->exit();
 }
 
-void robot::getLeftRGB24(unsigned char* data, int _width, int _height)
-{
+void robot::getLeftRGB24(unsigned char* data, int _width, int _height) {
 	eyeModeCtl->getRGB24(data, _width, _height, EyeMode::LEFT);
 }
-void robot::getRightRGB24(unsigned char* data, int _width, int _height)
-{
+
+void robot::getRightRGB24(unsigned char* data, int _width, int _height) {
 	eyeModeCtl->getRGB24(data, _width, _height, EyeMode::RIGHT);
 }
 
-void robot::resetPos()
-{
-	//打开电机，离合器
-	ctrlCard->SetMotor(MotorOn);
-	ctrlCard->SetClutch(ClutchOn);
+void robot::resetPos() {
+	ControlCard::GetInstance().SetMotor(MotorOn);
+	ControlCard::GetInstance().SetClutch(ClutchOn);
 	// 开启全局定时器;
 	TIMECAPS tc;
-	if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) == TIMERR_NOERROR)
-	{
+	if (timeGetDevCaps(&tc, sizeof(TIMECAPS)) == TIMERR_NOERROR) {
 		wAccuracy = MIN(MAX(tc.wPeriodMin, 1), tc.wPeriodMax);//分辨率的值不能超出系统的取值范围 
 		timeBeginPeriod(wAccuracy);// 调用timeBeginPeriod函数设置定时器的分辨率
 								   // 设置定时器  
@@ -221,46 +162,36 @@ void robot::resetPos()
 	}
 }
 
-void robot::setWindow(HWND hWnd)
-{
+void robot::setWindow(HWND hWnd) {
 	m_hWnd = hWnd;
 	bDetect->Set_hWnd(hWnd);
 	pasvMode->Set_hWnd(hWnd);
-	ctrlCard->Set_hWnd(hWnd);
+	ControlCard::GetInstance().Set_hWnd(hWnd);
 	EMGContrl->m_hWnd = hWnd;
 }
 
-bool robot::isEMGMove()
-{
+bool robot::isEMGMove() {
 	return EMGContrl->isBeginMove;
 }
 
-void robot::startEMGMove()
-{
-	//if (ctrlCard->IsCardInitial()) {
+void robot::startEMGMove() {
 	if (m_isEmgModeStart == false) {
 		m_isEmgModeStart = true;
 		EMGContrl->start(bDetect);
 	}	
-	//}
 }
-void robot::stopEMGMove()
-{
-	//if (ctrlCard->IsCardInitial()) {
+void robot::stopEMGMove() {
 	if (m_isEmgModeStart == true) {
 		m_isEmgModeStart = false;
 		EMGContrl->stop();
 	}
-	//}
 }
 
-double robot::getEMGSignal(int index /* = 0 */)
-{
+double robot::getEMGSignal(int index /* = 0 */) {
 	return EMGContrl->getRawData(index);
 }
 
-void robot::stopResetPos()
-{
+void robot::stopResetPos() {
 	if(Mtimer_ID!=0)
 		timeKillEvent(Mtimer_ID);
 	if(wAccuracy!=0)
@@ -268,8 +199,7 @@ void robot::stopResetPos()
 }
 
 
-void getSensorData(bool Travel_Switch[4])
-{
+void getSensorData(bool Travel_Switch[4]) {
 	I32 DI_Group = 0; // If DI channel less than 32
 	I32 DI_Data = 0; // Di data
 	I32 di_ch[InputChannels];
@@ -285,37 +215,31 @@ void getSensorData(bool Travel_Switch[4])
 	Travel_Switch[3] = di_ch[19];//1号电机MEL信号-肩部电机
 }
 
-void move2ORZ()
-{
+void move2ORZ() {
 	//获取光电开关信息
 	bool RobotORZ[4] = {0};
 	getSensorData(RobotORZ);
 	static int i = 0;
 	//判断0号电机-肩部 是否在零位，如果不是则回零位运动开始，如果是则停止运动
-	if (RobotORZ[2] != true)
-	{
+	if (RobotORZ[2] != true) {
 		APS_vel(ShoulderAxisId, 1, 5 / Unit_Convert, 0);
 	}
-	else
-	{
+	else {
 		APS_stop_move(ShoulderAxisId);
 	}
 	//判断1号电机-肘部是否在零位，如果不是则回零位运动开始，如果是则停止运动
-	if (RobotORZ[0] != true)
-	{
+	if (RobotORZ[0] != true) {
 		APS_vel(ElbowAxisId, 1, 5 / Unit_Convert, 0);
 	}
-	else
-	{
+	else {
 		APS_stop_move(ElbowAxisId);
 	}
 
-	if ((RobotORZ[0] == true) && (RobotORZ[2] == true))
-	{
+	if ((RobotORZ[0] == true) && (RobotORZ[2] == true)) {
 		//到点以后关电机
-		ORZCtrlCard.SetMotor(MotorOff);
-		ORZCtrlCard.SetClutch(ClutchOff);
-		ORZCtrlCard.SetParamZero();
+		ControlCard::GetInstance().SetMotor(MotorOff);
+		ControlCard::GetInstance().SetClutch(ClutchOff);
+		ControlCard::GetInstance().SetParamZero();
 		//停止定时器
 		if (Mtimer_ID != 0)
 			timeKillEvent(Mtimer_ID);

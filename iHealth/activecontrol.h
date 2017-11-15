@@ -32,7 +32,6 @@ public:
 private:
     FTWrapper mFTWrapper;
 	boundaryDetection *bDetect;//关节角
-    ControlCard *ctrlCard;
     //力控模式算出的命令速度
     double cmdVel[2];
     double jAngle[2];

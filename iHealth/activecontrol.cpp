@@ -29,15 +29,11 @@ activecontrol::activecontrol()
 	m_hThread = 0;
 	m_stop =false;
 	isMove = false;
-    ctrlCard=NULL;
-    ctrlCard=new ControlCard;
     for(int i=0;i<2;i++)
         cmdVel[i]=0;
 }
 activecontrol:: ~activecontrol()
 {
-    if(ctrlCard!=NULL)
-        delete ctrlCard;
 }
 unsigned int __stdcall FTSThreadFun(PVOID pParam)
 {
@@ -89,8 +85,8 @@ void activecontrol::stopAcquisit()
 void activecontrol::startMove(boundaryDetection *Angle)
 {
     
-    ctrlCard->SetMotor(MotorOn);
-    ctrlCard->SetClutch(ClutchOn);
+	ControlCard::GetInstance().SetMotor(MotorOn);
+	ControlCard::GetInstance().SetClutch(ClutchOn);
 	bDetect =Angle;
 	isMove = true;
 	std::string file_name = get_file_name_by_localtime();
@@ -100,7 +96,7 @@ void activecontrol::startMove(boundaryDetection *Angle)
 }
 void activecontrol::stopMove()
 {
-	ctrlCard->SetMotor(MotorOff);
+	ControlCard::GetInstance().SetMotor(MotorOff);
 	//ctrlCard->SetClutch(ClutchOff);
 	isMove = false;
 	if (active_data_record) {
@@ -241,8 +237,8 @@ void activecontrol::FTSContrl()
 		elbowSwitch[i] = swithData[i];
 		shoulderSwitch[i] = swithData[2 + i];
 	}
-	ctrlCard->VelocityMove(ShoulderAxisId, Ud_Shoul);
-	ctrlCard->VelocityMove(ElbowAxisId, Ud_Arm);
+	ControlCard::GetInstance().VelocityMove(ShoulderAxisId, Ud_Shoul);
+	ControlCard::GetInstance().VelocityMove(ElbowAxisId, Ud_Arm);
 }
 
 void activecontrol::getRawAngle(double angle[2])

@@ -27,7 +27,6 @@ private:
     bool *switchData;
     HANDLE dataMutex;
     boundaryDetection *bDetect;
-    ControlCard *ctrlCard;
     std::vector<double>rawData[4];
 };
 

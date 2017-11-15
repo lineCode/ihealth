@@ -18,7 +18,7 @@ static const double Unit_Convert = 0.009;
 class ControlCard
 {
 public:
-	ControlCard();
+	static ControlCard& GetInstance();
 	~ControlCard();
 	
 	bool IsInitial();
@@ -33,6 +33,7 @@ public:
 	void Set_hWnd(HWND hWnd);
 
 private:
+	ControlCard();
 	void LoadAxisParam(I32 board_id);
 	void UpdateDigitInput();
 	void VelMove(short AxisId, double Vel);
@@ -62,6 +63,5 @@ private:
 	I32 board_id_;
 };
 
-const double ControlCard::ResetVel = -4.0;
-const double ControlCard::MaxVel = 5.0;
+
 

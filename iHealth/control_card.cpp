@@ -4,6 +4,14 @@
 
 using namespace std;
 
+const double ControlCard::ResetVel = -4.0;
+const double ControlCard::MaxVel = 5.0;
+
+ControlCard &ControlCard::GetInstance() {
+	static ControlCard instance;
+	return instance;
+}
+
 ControlCard::ControlCard() 
 	: total_axis_(0),
 	  board_id_(0),
